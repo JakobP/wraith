@@ -10,6 +10,8 @@
           word-wrap: break-word;
         }
       </style>
+
+
     </head>
     <body>
       <div class="container">
@@ -45,11 +47,20 @@
                 <div class="row">
                   <h3 class="col-lg-1 text-muted"><%=size%>px</h3>
                   <% files[:variants].each do |file| %>
-                    <div class="col-lg-3">
+                     <div class="col-lg-3">
                       <a href="<%=file[:filename]%>">
                         <img class="short-screenshot img-thumbnail" src="<%=path%><%=file[:thumb]%>">
                       </a>
-                      <p class="text-center"><%=file[:name]%></p>
+                      <%
+                        # Reads the URL that were compared from .txt files. This is a horribly hacky way of doing things
+                        currentPath = Dir.pwd + "/" + location + "/"
+                        subDirectory = file[:filename].slice(0..(file[:filename].index('/')))
+                        urlFileDirectory = currentPath + subDirectory + file[:name] + ".txt"
+                        urlFile = File.open(urlFileDirectory)
+                        pageUrl = urlFile.read
+                      %> 
+
+                      <p class="text-center"><a href="<%= pageUrl %>"><%= file[:name] %></a></p>
                     </div>
                   <% end %>
                   <div class="col-lg-3">
