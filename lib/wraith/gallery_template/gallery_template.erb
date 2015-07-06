@@ -24,7 +24,7 @@
               <div class="panel-heading">Screenshots:</div>
                 <ul class="list-group list-group-flush">
                 <% directories.keys.each do |dir| %>
-                  <li class="list-group-item"><a href="#<%=path%><%=dir%>"><%=dir.gsub('__', '/')%></a></li>
+                  <li class="list-group-item"><a target="_blank" href="#<%=path%><%=dir%>"><%=dir.gsub('__', '/')%></a></li>
                 <% end %>
               </ul>
             </div>
@@ -48,7 +48,7 @@
                   <h3 class="col-lg-1 text-muted"><%=size%>px</h3>
                   <% files[:variants].each do |file| %>
                      <div class="col-lg-3">
-                      <a href="<%=file[:filename]%>">
+                      <a target="_blank" href="<%=file[:filename]%>">
                         <img class="short-screenshot img-thumbnail" src="<%=path%><%=file[:thumb]%>">
                       </a>
                       <%
@@ -60,12 +60,12 @@
                         pageUrl = urlFile.read
                       %> 
 
-                      <p class="text-center"><a href="<%= pageUrl %>"><%= file[:name] %></a></p>
+                      <p class="text-center"><a target="_blank" href="<%= pageUrl %>"><%= file[:name] %></a></p>
                     </div>
                   <% end %>
                   <div class="col-lg-3">
                   <% if files[:diff] %>
-                    <a href="<%=files[:diff][:filename]%>">
+                    <a target="_blank" href="<%=files[:diff][:filename]%>">
                       <img class="short-screenshot img-thumbnail" src="<%=path%><%=files[:diff][:thumb]%>">
                     </a>
                   <% end %>
