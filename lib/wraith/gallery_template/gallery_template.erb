@@ -58,6 +58,7 @@
                         urlFileDirectory = currentPath + subDirectory + file[:name] + ".txt"
                         urlFile = File.open(urlFileDirectory)
                         pageUrl = urlFile.read
+                        urlFile.close
                       %> 
 
                       <p class="text-center"><a href="<%= pageUrl %>"><%= file[:name] %></a></p>
